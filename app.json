@@ -1,7 +1,7 @@
 {
   "expo": {
-    "name": "zynex-app",
-    "slug": "zynex-app",
+    "name": "zynexSolutions",
+    "slug": "zynexSolutions",
     "version": "1.0.0",
     "orientation": "portrait",
     "icon": "./assets/icon.png",
@@ -21,7 +21,8 @@
         "backgroundColor": "#ffffff"
       },
       "edgeToEdgeEnabled": true,
-      "predictiveBackGestureEnabled": false
+      "predictiveBackGestureEnabled": false,
+      "package": "com.zynexsolutions.app"
     },
     "web": {
       "favicon": "./assets/favicon.png"
