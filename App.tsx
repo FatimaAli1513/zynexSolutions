@@ -338,7 +338,7 @@ const styles = StyleSheet.create({
     backgroundColor: COLORS.primaryDark,
     borderTopWidth: 1,
     borderTopColor: 'rgba(255,255,255,0.1)',
-    paddingBottom: 34,
+    paddingBottom: 50,
     paddingTop: 12,
   },
   tabItem: {

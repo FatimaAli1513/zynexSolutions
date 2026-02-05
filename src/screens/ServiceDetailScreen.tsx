@@ -1,4 +1,4 @@
-import { StyleSheet, Text, View, ScrollView, TouchableOpacity, Alert } from 'react-native';
+import { StyleSheet, Text, View, ScrollView, TouchableOpacity, Linking } from 'react-native';
 import { Ionicons, MaterialCommunityIcons } from '@expo/vector-icons';
 import { COLORS } from '../constants/colors';
 
@@ -29,20 +29,12 @@ const getIconForService = (id: string) => {
 };
 
 export const ServiceDetailScreen = ({ service, onBack }: ServiceDetailScreenProps) => {
-  const handleContact = () => {
-    Alert.alert(
-      'Contact Us',
-      'Visit us at:\n\nHouse 8, Street 37\nWassan Pura, Lahore\nPakistan',
-      [{ text: 'OK' }]
-    );
+  const handleEmail = () => {
+    Linking.openURL('mailto:Muhammadwaleed3307@gmail.com?subject=Inquiry about ' + service.title);
   };
 
-  const handleInquiry = () => {
-    Alert.alert(
-      'Inquiry Sent',
-      `Thank you for your interest in ${service.title}! We will get back to you soon.`,
-      [{ text: 'OK' }]
-    );
+  const handleCall = () => {
+    Linking.openURL('tel:+923055600700');
   };
 
   return (
@@ -109,8 +101,10 @@ export const ServiceDetailScreen = ({ service, onBack }: ServiceDetailScreenProp
           <View style={styles.contactBox}>
             <Text style={styles.companyName}>ZYNEX SOLUTIONS (PRIVATE) LIMITED</Text>
             <Text style={styles.addressText}>House 8, Street 37</Text>
-            <Text style={styles.addressText}>Wassan Pura, Lahore</Text>
-            <Text style={styles.addressText}>Pakistan</Text>
+            <Text style={styles.addressText}>Wassan Pura, Lahore, Pakistan</Text>
+            <View style={styles.contactDivider} />
+            <Text style={styles.contactInfo}>📧 Muhammadwaleed3307@gmail.com</Text>
+            <Text style={styles.contactInfo}>📞 0305-5600700</Text>
           </View>
         </View>
       </ScrollView>
@@ -119,19 +113,19 @@ export const ServiceDetailScreen = ({ service, onBack }: ServiceDetailScreenProp
       <View style={styles.footer}>
         <TouchableOpacity 
           style={styles.callBtn} 
-          onPress={handleInquiry}
-          accessibilityLabel="Send Inquiry"
+          onPress={handleCall}
+          accessibilityLabel="Call Us"
         >
-          <Ionicons name="send" size={20} color={COLORS.white} />
-          <Text style={styles.btnText}>Send Inquiry</Text>
+          <Ionicons name="call" size={20} color={COLORS.white} />
+          <Text style={styles.btnText}>Call Us</Text>
         </TouchableOpacity>
         <TouchableOpacity 
           style={styles.contactBtn} 
-          onPress={handleContact}
-          accessibilityLabel="Contact Info"
+          onPress={handleEmail}
+          accessibilityLabel="Email Us"
         >
-          <Ionicons name="location" size={20} color={COLORS.white} />
-          <Text style={styles.btnText}>Location</Text>
+          <Ionicons name="mail" size={20} color={COLORS.white} />
+          <Text style={styles.btnText}>Email Us</Text>
         </TouchableOpacity>
       </View>
     </View>
@@ -258,12 +252,26 @@ const styles = StyleSheet.create({
     textAlign: 'center',
     lineHeight: 20,
   },
+  contactDivider: {
+    width: '80%',
+    height: 1,
+    backgroundColor: 'rgba(255,255,255,0.2)',
+    marginVertical: 12,
+  },
+  contactInfo: {
+    fontSize: 13,
+    color: COLORS.white,
+    textAlign: 'center',
+    marginTop: 4,
+  },
   footer: {
     position: 'absolute',
     bottom: 0,
     left: 0,
     right: 0,
-    padding: 20,
+    paddingHorizontal: 20,
+    paddingTop: 16,
+    paddingBottom: 50,
     backgroundColor: COLORS.primaryDark,
     borderTopWidth: 1,
     borderTopColor: 'rgba(255,255,255,0.1)',

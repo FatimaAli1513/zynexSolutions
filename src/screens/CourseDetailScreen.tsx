@@ -1,4 +1,4 @@
-import { StyleSheet, Text, View, ScrollView, TouchableOpacity } from 'react-native';
+import { StyleSheet, Text, View, ScrollView, TouchableOpacity, Linking } from 'react-native';
 import { Ionicons, MaterialCommunityIcons, FontAwesome5, MaterialIcons } from '@expo/vector-icons';
 import { COLORS } from '../constants/colors';
 
@@ -40,8 +40,7 @@ const getIconForCourse = (id: string) => {
 
 export const CourseDetailScreen = ({ course, onBack }: CourseDetailScreenProps) => {
   const handleEnroll = () => {
-    console.log(`Enrolling in ${course.title}`);
-    // Here you can add enrollment logic
+    Linking.openURL(`mailto:Muhammadwaleed3307@gmail.com?subject=Enrollment Request: ${course.title}&body=Hi, I am interested in enrolling for the ${course.title} course. Please share more details.`);
   };
 
   return (
@@ -87,11 +86,6 @@ export const CourseDetailScreen = ({ course, onBack }: CourseDetailScreenProps) 
             <Ionicons name="people-outline" size={20} color={COLORS.accentPurple} />
             <Text style={styles.statValue}>{course.students}</Text>
             <Text style={styles.statLabel}>Enrolled</Text>
-          </View>
-          <View style={styles.statBox}>
-            <Ionicons name="cash-outline" size={20} color={COLORS.accentPurple} />
-            <Text style={styles.statValue}>{course.price}</Text>
-            <Text style={styles.statLabel}>Fee</Text>
           </View>
         </View>
 
@@ -144,7 +138,7 @@ export const CourseDetailScreen = ({ course, onBack }: CourseDetailScreenProps) 
           accessibilityLabel="Enroll Now"
         >
           <Ionicons name="school" size={20} color={COLORS.white} />
-          <Text style={styles.enrollText}>Enroll Now - {course.price}</Text>
+          <Text style={styles.enrollText}>Enroll Now</Text>
         </TouchableOpacity>
       </View>
     </View>
@@ -293,7 +287,9 @@ const styles = StyleSheet.create({
     bottom: 0,
     left: 0,
     right: 0,
-    padding: 20,
+    paddingHorizontal: 20,
+    paddingTop: 16,
+    paddingBottom: 50,
     backgroundColor: COLORS.primaryDark,
     borderTopWidth: 1,
     borderTopColor: 'rgba(255,255,255,0.1)',
