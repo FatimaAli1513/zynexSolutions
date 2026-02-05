@@ -1,4 +1,4 @@
-import { StyleSheet, Text, View, ScrollView, TouchableOpacity, Linking } from 'react-native';
+import { StyleSheet, Text, View, ScrollView, TouchableOpacity, Alert } from 'react-native';
 import { Ionicons, MaterialCommunityIcons } from '@expo/vector-icons';
 import { COLORS } from '../constants/colors';
 
@@ -30,12 +30,19 @@ const getIconForService = (id: string) => {
 
 export const ServiceDetailScreen = ({ service, onBack }: ServiceDetailScreenProps) => {
   const handleContact = () => {
-    // Open WhatsApp or email
-    Linking.openURL('mailto:info@zynexsolutions.com');
+    Alert.alert(
+      'Contact Us',
+      'Visit us at:\n\nHouse 8, Street 37\nWassan Pura, Lahore\nPakistan',
+      [{ text: 'OK' }]
+    );
   };
 
-  const handleCall = () => {
-    Linking.openURL('tel:+923001234567');
+  const handleInquiry = () => {
+    Alert.alert(
+      'Inquiry Sent',
+      `Thank you for your interest in ${service.title}! We will get back to you soon.`,
+      [{ text: 'OK' }]
+    );
   };
 
   return (
@@ -112,19 +119,19 @@ export const ServiceDetailScreen = ({ service, onBack }: ServiceDetailScreenProp
       <View style={styles.footer}>
         <TouchableOpacity 
           style={styles.callBtn} 
-          onPress={handleCall}
-          accessibilityLabel="Call Us"
+          onPress={handleInquiry}
+          accessibilityLabel="Send Inquiry"
         >
-          <Ionicons name="call" size={20} color={COLORS.white} />
-          <Text style={styles.btnText}>Call Us</Text>
+          <Ionicons name="send" size={20} color={COLORS.white} />
+          <Text style={styles.btnText}>Send Inquiry</Text>
         </TouchableOpacity>
         <TouchableOpacity 
           style={styles.contactBtn} 
           onPress={handleContact}
-          accessibilityLabel="Email Us"
+          accessibilityLabel="Contact Info"
         >
-          <Ionicons name="mail" size={20} color={COLORS.white} />
-          <Text style={styles.btnText}>Email Us</Text>
+          <Ionicons name="location" size={20} color={COLORS.white} />
+          <Text style={styles.btnText}>Location</Text>
         </TouchableOpacity>
       </View>
     </View>
