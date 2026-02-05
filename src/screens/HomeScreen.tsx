@@ -25,10 +25,6 @@ export const HomeScreen = ({ onCoursePress }: HomeScreenProps) => {
             <Text style={styles.logoSubtext}>(Pvt) Ltd</Text>
           </View>
         </View>
-        <TouchableOpacity style={styles.notifBtn} accessibilityLabel="Notifications">
-          <Ionicons name="notifications-outline" size={24} color={COLORS.white} />
-          <View style={styles.notifDot} />
-        </TouchableOpacity>
       </View>
 
       {/* Hero */}
@@ -220,19 +216,6 @@ const styles = StyleSheet.create({
   logoSubtext: {
     fontSize: 12,
     color: COLORS.textSecondary,
-  },
-  notifBtn: {
-    padding: 8,
-    position: 'relative',
-  },
-  notifDot: {
-    position: 'absolute',
-    top: 8,
-    right: 8,
-    width: 8,
-    height: 8,
-    borderRadius: 4,
-    backgroundColor: COLORS.error,
   },
   hero: {
     paddingHorizontal: 20,
